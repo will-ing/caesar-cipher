@@ -55,7 +55,7 @@ def binarySearch(arr, x):
     low = 0
     high = len(arr) - 1
     while(low <= high):
-        mid = (low + high) / 2
+        mid = (low + high) // 2
         if arr[mid] == x:
             return arr[mid]
         elif x < arr[mid]:
@@ -100,11 +100,12 @@ def break_caesar(encrypted):
             checker = []
             for i in splitting:
                 if i in word_dict:
-                    print(f'I : {i}')
+                    # if binarySearch(word_dict, i):
+                    # print(f'I : {i}')
 
                     checker.append(i)
             mess = mess.translate(shifting)
-    print(answer)
+    # print(answer)
     return answer
 
 
