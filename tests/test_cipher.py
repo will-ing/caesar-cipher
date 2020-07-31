@@ -13,3 +13,13 @@ def test_decrypt():
 
 def test_break():
     assert break_caesar('hkpf jgnr') == 'find help '
+
+
+def test_upper():
+    assert break_caesar('hKpF jGnr') == 'find help '
+
+
+def test_upper():
+    message = encrypt('It was the best of times, it was the worst of times', 2)
+    assert break_caesar(
+        message) == 'It was the best of times, it was the worst of times '

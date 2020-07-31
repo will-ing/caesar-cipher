@@ -29,7 +29,9 @@ def encrypt(entry, key):
     alph_lower = string.ascii_lowercase
     shift_it = alph_lower[key:] + alph_lower[:key]
     tb = str.maketrans(alph_lower, shift_it)
-    return entry.translate(tb)
+    ent = entry.lower()
+    remove_char = ent.translate(str.maketrans('', '', "!?,.'"))
+    return remove_char.translate(tb)
 
 
 def decrypt(entry, key):
@@ -38,16 +40,22 @@ def decrypt(entry, key):
 
 def binarySearch(arr, x):
     """
-    searches for the index of the arr and value that are passed through.
-    If the value does not exist it will return -1
-    arg(arr) = an array of any length
-    arg(x) = x is the value you want to search
+    Searches an array for a value.
+
+    Big O: O(log n)
+
+    Args:
+        arr ([list]): [any ordered list]
+        x ([string or int]): [any value in the list]
+
+    Returns:
+        [string]: [value that you wanted out of the array]
     """
 
     low = 0
     high = len(arr) - 1
     while(low <= high):
-        mid = (low + high) // 2
+        mid = (low + high) / 2
         if arr[mid] == x:
             return arr[mid]
         elif x < arr[mid]:
@@ -75,17 +83,29 @@ def break_caesar(encrypted):
 
     mess = encrypted.lower()
     word_dict = words.words()
+    checker = list()
+    answer = ' '
 
-    answer = ''
-
-    for i in range(0, 25):
+    for i in range(0, 26):
         splitting = mess.split()
+        # print(splitting)
 
-        for i in splitting:
-            result = binarySearch(word_dict, i)
-            if result and result != None:
-                answer += f'{result} '
+        # print(f'Checker: {len(checker)}')
+        # print(f'splitting: {len(splitting)}')
 
-        mess = mess.translate(shifting)
+        if len(checker) == len(splitting):
+            answer = answer.join(checker)
 
+        else:
+            checker = []
+            for i in splitting:
+                if i in word_dict:
+                    print(f'I : {i}')
+
+                    checker.append(i)
+            mess = mess.translate(shifting)
+    print(answer)
     return answer
+
+
+break_caesar(encrypt('It was the best of times, it was the worst of times', 2))
