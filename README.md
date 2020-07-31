@@ -4,7 +4,7 @@
 
 ## Cipher
 
-The web application consists of a python code
+The web application consists of a python code that has methods that encrypts, decrypts and breaks a caesar cipher.
 
 ---
 
@@ -14,6 +14,11 @@ The web application consists of a python code
 - Python
 - Poetry
 - Pylint
+- pytest
+- pytest-watch
+- nltk
+- sys
+- io
 
 ---
 
@@ -35,7 +40,7 @@ Once downloaded, activate your virtual environment and run by python web-scraper
 
 ```terminal
 cd YourRepo/YourProject
-python caesar-cipher.py
+python caesar-cipher/cipher.py
 ```
 
 Unit testing is included in the project using the pytest outputs. Tests have been provided for models for the application.
@@ -44,7 +49,7 @@ Unit testing is included in the project using the pytest outputs. Tests have bee
 
 ## Data Flow
 
-Enter wiki page -> run methods for count and report -> returns number of cites and displays the paragraphs
+Encrypt > decrypt > break w/ brute force
 
 ---
 
